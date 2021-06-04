@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "library.h"
+#include <time.h>
+#include "random.h"
 
 int main(void) {
     Random stream = new_rand(501235891);

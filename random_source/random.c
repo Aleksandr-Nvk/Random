@@ -1,15 +1,20 @@
 #include <time.h>
-#include <limits.h>
 #include <stdlib.h>
-#include <math.h>
+#include <stdio.h>
 
 #define MAX_RAND_INT    (INT64_MAX - 1)                   /* max possible random integer value (last value lost) */
 #define A_MULTIPLIER    4645906587823291368         /* pre-calculated multiplier 'a', defined in tables */
 
 /* linear congruential generator for suitable amount of integers */
-#define LCG_RAND(current)   ((A_MULTIPLIER * (current)) % (MAX_RAND_INT + 1))
+#define LCG_RAND(current)   ((A_MULTIPLIER * (current)) % INT64_MAX)
 
 typedef union random {
+    long long llong_int;
+    long      long_int;
+    int       int_int;
+    short     short_int;
+    char      char_int;
+
     uint64_t uint64;
     uint32_t uint32;
     uint16_t uint16;
@@ -129,6 +134,6 @@ float rand_float_range(float min, float max) {
 }
 
 /* returns either 0 or 1 randomly */
-value rand_bool() {
+value rand_bool(void) {
     return rand_int_range(0, 1);
 }
