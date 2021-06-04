@@ -6,8 +6,8 @@ int main(void) {
 
     clock_t start = clock();
 
-    for (int i = 0; i < 100; ++i) {
-        printf("%.30f\n", rand_float_range(-100000.5f, 100000.5f));
+    for (int i = 0; i < 10000; ++i) {
+        printf("\n%d", rand_bool().uint32);
     }
 
     printf("\nDone in %lf secs", (double)(clock() - start) / (double)CLOCKS_PER_SEC);
