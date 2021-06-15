@@ -1,4 +1,6 @@
-#include "random.h"
+#include "../random.h"
+#include <stdio.h>
+#include <time.h>
 
                                         /* *** UNSIGNED 64-BIT INTEGER *** */
 
@@ -33,7 +35,7 @@ uint64_t rand64_non_stream = 0;    /* current non-stream uint64_t value */
 /* returns a random uint64_t value */
 uint64_t rand64(void) {
     if (rand64_non_stream == 0) {
-        rand64_non_stream = time(NULL);
+        rand64_non_stream = (uint64_t)time(NULL);
     }
 
     return rand64_non_stream = xorshift64(rand64_non_stream);
@@ -72,7 +74,7 @@ uint32_t rand32_non_stream = 0;    /* current non-stream uint32_t value */
 /* returns a random uint32_t value */
 uint32_t rand32(void) {
     if (rand32_non_stream == 0) {
-        rand32_non_stream = time(NULL);
+        rand32_non_stream = (uint32_t)time(NULL);
     }
 
     return rand32_non_stream = xorshift32(rand32_non_stream);
@@ -111,7 +113,7 @@ uint16_t rand16_non_stream = 0;    /* current non-stream uint16_t value */
 /* returns a random uint16_t value */
 uint16_t rand16(void) {
     if (rand16_non_stream == 0) {
-        rand16_non_stream = time(NULL);
+        rand16_non_stream = (uint16_t)time(NULL);
     }
 
     return rand16_non_stream = xorshift16(rand16_non_stream);
@@ -150,7 +152,7 @@ uint8_t rand8_non_stream = 0;    /* current non-stream uint8_t value */
 /* returns a random uint8_t value */
 uint8_t rand8(void) {
     if (rand8_non_stream == 0) {
-        rand8_non_stream = time(NULL);
+        rand8_non_stream = (uint8_t)time(NULL);
     }
 
     return rand8_non_stream = xorshift8(rand8_non_stream);
@@ -173,7 +175,7 @@ RandomBool new_rand_bool(uint8_t seed) {
 /* returns the next bool value (0 or 1) from 'stream' */
 uint8_t next_bool(RandomBool* stream) {
     stream->current = xorshift8(stream->current);
-    return stream->current & 1;
+    return (uint8_t)(stream->current & 1);
 }
 
 uint8_t rand_bool_non_stream = 0;    /* current non-stream bool value */
@@ -181,11 +183,11 @@ uint8_t rand_bool_non_stream = 0;    /* current non-stream bool value */
 /* returns either 0 or 1 randomly */
 uint8_t rand_bool(void) {
     if (rand_bool_non_stream == 0) {
-        rand_bool_non_stream = time(NULL);
+        rand_bool_non_stream = (uint8_t)time(NULL);
     }
 
     rand_bool_non_stream = xorshift8(rand_bool_non_stream);
-    return rand_bool_non_stream & 1;
+    return (uint8_t)(rand_bool_non_stream & 1);
 }
                                         /* *** ADDITIONAL HANDY FUNCTIONS *** */
 

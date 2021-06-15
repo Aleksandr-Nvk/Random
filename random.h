@@ -1,6 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
+#include <stdint.h>
 
                                         /* *** UNSIGNED 64-BIT INTEGER *** */
 
@@ -12,9 +10,6 @@ typedef struct Random64 {
 
 /* returns a new uint64_t stream seeded with 'seed' */
 Random64 new_rand64(uint64_t seed);
-
-/* xorshift algorithm for uint64_t values */
-uint64_t xorshift64(uint64_t current);
 
 /* returns the next uint64_t value from 'stream' */
 uint64_t next64(Random64* stream);
@@ -33,9 +28,6 @@ typedef struct Random32 {
 /* returns a new uint32_t stream seeded with 'seed' */
 Random32 new_rand32(uint32_t seed);
 
-/* xorshift algorithm for uint32_t values */
-uint32_t xorshift32(uint32_t current);
-
 /* returns the next uint32_t value from 'stream' */
 uint32_t next32(Random32* stream);
 
@@ -53,9 +45,6 @@ typedef struct Random16 {
 /* returns a new uint16_t stream seeded with 'seed' */
 Random16 new_rand16(uint16_t seed);
 
-/* xorshift algorithm for uint16_t values */
-uint16_t xorshift16(uint16_t current);
-
 /* returns the next uint16_t value from 'stream' */
 uint16_t next16(Random16* stream);
 
@@ -72,9 +61,6 @@ typedef struct Random8 {
 
 /* returns a new uint8_t stream seeded with 'seed' */
 Random8 new_rand8(uint8_t seed);
-
-/* xorshift algorithm for uint8_t values */
-uint8_t xorshift8(uint8_t current);
 
 /* returns the next uint8_t value from 'stream' */
 uint8_t next8(Random8* stream);
@@ -98,6 +84,7 @@ uint8_t next_bool(RandomBool* stream);
 
 /* returns either 0 or 1 randomly */
 uint8_t rand_bool(void);
+
                                         /* *** ADDITIONAL HANDY FUNCTIONS *** */
 
 /* returns a random int64_t value between min inclusive and max inclusive */
